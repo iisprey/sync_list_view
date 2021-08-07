@@ -1,0 +1,14 @@
+name: sync_list_view
+description: A new Flutter package project.
+version: 0.0.1
+homepage: null
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get: ^4.3.4
+  scrollable_positioned_list: 0.2.0-nullsafety.0
