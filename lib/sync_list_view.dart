@@ -2,7 +2,6 @@ library sync_list_view;
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import 'controller.dart';
@@ -13,12 +12,11 @@ export 'sync_list_view.dart';
 
 class SyncListView extends StatelessWidget {
   final List<SyncTab> children;
-  SyncListView({required this.children});
-
-  final c = Get.put(SyncListViewController());
+  const SyncListView({required this.children});
 
   @override
   Widget build(BuildContext context) {
+    final c = Get.put(SyncListViewController());
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +45,7 @@ class SyncListView extends StatelessWidget {
           child: ScrollablePositionedList.builder(
             itemScrollController: c.bodyScrollController,
             itemPositionsListener: c.bodyPositionsListener,
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             itemCount: children.length,
             itemBuilder: (_, index) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,

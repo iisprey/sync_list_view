@@ -12,6 +12,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
+const cats = [
+  'Romance',
+  'Mystery',
+  'Thriller',
+  'Science Fiction',
+  'Fantasy',
+  "Children's Book",
+  'Biographies',
+  'Suspense'
+];
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,33 +33,39 @@ class HomePage extends StatelessWidget {
       ),
       body: SyncListView(
         children: List.generate(
-          10,
+          cats.length,
           (index) {
             return SyncTab(
               tab: (isActive) => Container(
-                color: isActive ? Colors.green : Colors.grey,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 7),
-                child: Text('$index'),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                margin: EdgeInsets.only(right: 5),
+                decoration: BoxDecoration(
+                  color: isActive ? Colors.green : Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Text(
+                  cats[index],
+                  style: TextStyle(
+                    color: isActive ? Colors.white : Colors.black,
+                  ),
+                ),
               ),
               title: Center(
-                  child: Text(
-                'TITLE: $index',
-                style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                child: Text(
+                  cats[index],
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-              )),
+              ),
               body: ListView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (_, i) => Card(
                   child: Container(
                     padding: EdgeInsets.all(15),
                     child: Text('$i'),
                   ),
                 ),
-                itemCount: 5,
+                itemCount: 7,
               ),
             );
           },
